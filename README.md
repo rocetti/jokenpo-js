@@ -1,6 +1,7 @@
 # jokenpo-js
 A simple JavaScript game of Rock, Paper and Scissors.
 
+# Thought Process
 ## Understand the problem
 I need to create a game of jokenpo that is player againts machine in a best of 5 rounds challenge.
 ## Break the problem
@@ -10,3 +11,4 @@ I need to create a game of jokenpo that is player againts machine in a best of 5
 - player written input must be case sensitive.
 - They will play a total of 5 rounds, meaning that the first of them to reach 3 victories is the winner.
 - if the human player win, congrats him, if lose game over. Loop starts over again if player wants to keep playing.
+## Pseudocode (on JS file)

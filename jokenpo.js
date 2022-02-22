@@ -1,6 +1,17 @@
 /*
-I Kept the pseudocode here since this game is an exercise from the odin project course. 
+#################
+# Jokenpo! v1.0 #
+#################
+Small console game to practice my skills on problem solving and JavaScript.
+
+(Author Note: really crazy how all these years playing around with gamedev had payout somehow hahaha. First time writing JS and it was not even close to my experience learning before.)
+
+(For personal memory: Made this code on 22/02/2022 and took me around 6 hours +/-)
+
 ###########
+I kept the pseudocode here since this game is an exercise from the odin project course and the intent is to show the tought process during my problem solving steps.
+###########
+
 //The Main function is the one handling the loop
 //Create a variable to store player Score
 //Create a variable to store PC Score
@@ -48,7 +59,7 @@ function main(){
         do {
             playerInput = askValidInput("choice");            
             computerChoice = randomChoice();
-
+            //Score Add
             let winner = compareChoices(playerInput,computerChoice);
             switch (winner) {
                 case "Player":
@@ -60,7 +71,7 @@ function main(){
                 default:
                     break;
             }
-            
+            //Round anouncement
             console.log("And the winner for this round was...");
             console.log(winner);
             displayScore(playerScore,computerScore);
@@ -71,9 +82,10 @@ function main(){
             }            
         } while (true);
         //End of rounds loop
+        //Finishing the Game
         if (playerScore >= 3 || computerScore >= 3) {
             let champion = playerScore > computerScore?  "Player" : "Machine"
-            finishGame(champion);
+            endingMessage(champion);
             playerInput = askValidInput("replay");
         }
         if (playerInput === "y") {
@@ -154,7 +166,7 @@ function askValidInput(state){
     inputIsValid = false;
     return newInput;
 }
-
+//Machine choice with a theorical 33% chance for each
 function randomChoice() {
     let randi = Math.floor((Math.random() * 100));
     switch (true) {
@@ -190,7 +202,7 @@ function compareChoices(playerInput,computerChoice) {
     }
 }
 
-function finishGame(champs) {
+function endingMessage(champs) {
     if (champs === "Player") {
         console.log("Player WINS");
         console.log("CONGRATS! Your soul is yours to keep!");
