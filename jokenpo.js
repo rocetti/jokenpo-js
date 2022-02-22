@@ -154,15 +154,15 @@ function askValidInput(state){
 }
 
 function randomChoice() {
-    let randi = Math.floor((Math.random() * 2)+0.5);
-    switch (randi) {
-        case 0:
+    let randi = Math.floor((Math.random() * 100));
+    switch (true) {
+        case randi < 33:
             console.log("Machine chose Rock.");
             return "rock";
-        case 1:
+        case randi > 33 && randi < 66:
             console.log("Machine chose Paper.");
             return "paper";
-        case 2:
+        case randi > 66:
             console.log("Machine chose Scissors.");
             return "scissors";
         default:
