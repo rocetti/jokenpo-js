@@ -43,7 +43,7 @@ function main(){
         console.log("JOKENPO!");
         console.log("You against the machine in this game for your soul!");
         console.log("Win 3 games and you're free.");
-        displayScore(playerScore,computerScore);
+        console.log("///////////////////////////////////");
         //Loop through rounds
         do {
             playerInput = askValidInput("choice");            
@@ -64,11 +64,13 @@ function main(){
             console.log("And the winner for this round was...");
             console.log(winner);
             displayScore(playerScore,computerScore);
+            console.log("///////////////////////////////////");
+
             if (playerScore >=3 || computerScore >=3) {
                 break;
             }            
         } while (true);
-
+        //End of rounds loop
         if (playerScore >= 3 || computerScore >= 3) {
             let champion = playerScore > computerScore?  "Player" : "Machine"
             finishGame(champion);
@@ -194,6 +196,8 @@ function finishGame(champs) {
         console.log("CONGRATS! Your soul is yours to keep!");
     } else {
         console.log("Machine WINS");
-        console.log("GAME OVER! You'll feel your soul leaving your body slowly every day, but you can play again!");
+        console.log("GAME OVER!");
+        console.log("You'll feel your soul leaving your body slowly every day!");
+        console.log("Try again if you want it back!");
     }
 }
