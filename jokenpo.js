@@ -1,16 +1,7 @@
 /*
 #################
-# Jokenpo! v1.0 #
+# Jokenpo! v2.0 #
 #################
-Small console game to practice my skills on problem solving and JavaScript.
-
-(Author Note: really crazy how all these years playing around with gamedev had payout somehow hahaha. First time writing JS and it was not even close to my experience learning before.)
-
-(For personal memory: Made this code on 22/02/2022 and took me around 6 hours +/-)
-
-###########
-I kept the pseudocode here since this game is an exercise from the odin project course and the intent is to show the tought process during my problem solving steps.
-###########
 
 //The Main function is the one handling the loop
 //Create a variable to store player Score
@@ -18,11 +9,11 @@ I kept the pseudocode here since this game is an exercise from the odin project 
 //Create a variable to store player input
 //Create a variable to store PC choice
 //Game start message
-//Ask for input
+//Ask for input (Buttons)
 //Store it on the variable
-//Lowercase all characters
-//Check if its a valid input: r,p,s,rock,paper or scissors
-//True> proceed; False> ask again
+//Lowercase all characters XXX
+//Check if its a valid input: r,p,s,rock,paper or scissors XXX
+//True> proceed; False> ask again XXXX
 //Random roll 0~2
 //if 0 = Rock; 1 = Paper; 2 = Scissors; Store result in variable
 //Compare player input with PC
@@ -32,12 +23,12 @@ I kept the pseudocode here since this game is an exercise from the odin project 
 //Check if any of the scores are equal or bigger than 3
 //True> print the victory or game over message; False> Return to Ask for Input
 //Victory message or Game Over message
-//Ask if player want to play again (y/n)
-//Store input in player variable
-//lowercase all characters
-//check if its valid input
-//if neither starts with y or n its considered invalid input
-//True> proceed; False> ask again
+//Ask if player want to play again (y/n) (Button)
+//Store input in player variable XXXX
+//lowercase all characters XXXX
+//check if its valid input XXXX
+//if neither starts with y or n its considered invalid input XXX
+//True> proceed; False> ask again XXXX
 //if input starts with y then startover the game
 //if input starts with n then say goodbye
 */
