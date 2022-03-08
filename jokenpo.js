@@ -2,18 +2,6 @@
 #################
 # Jokenpo! v2.0 #
 #################
-//This new flow is an loop that moves foward with each button click.
-//show choice screen (buttons)
-//when player click one button store its value as its choice
-//run the machine choice
-//compare choices
-//add scores
-//when player click on the continue button proceed
-//check if any score is equal to 3
-//if true Game Over
-//if false go to next round
-//On Gameover: if player won show one screen. Else show the other.
-//On Gameover: when the player click on play again the game starts over
 */
 let playerScore = 0;
 let machineScore = 0;
