@@ -2,161 +2,118 @@
 #################
 # Jokenpo! v2.0 #
 #################
-
-//The Main function is the one handling the loop
-//Create a variable to store player Score
-//Create a variable to store PC Score
-//Create a variable to store player input
-//Create a variable to store PC choice
-//Game start message
-//Ask for input (Buttons)
-//Store it on the variable
-//Lowercase all characters XXX
-//Check if its a valid input: r,p,s,rock,paper or scissors XXX
-//True> proceed; False> ask again XXXX
-//Random roll 0~2
-//if 0 = Rock; 1 = Paper; 2 = Scissors; Store result in variable
-//Compare player input with PC
-//Rock beat Scissors, that beats Paper, that beats Rock
-//Store the victory point on its variable
-//Print the winner and score
-//Check if any of the scores are equal or bigger than 3
-//True> print the victory or game over message; False> Return to Ask for Input
-//Victory message or Game Over message
-//Ask if player want to play again (y/n) (Button)
-//Store input in player variable XXXX
-//lowercase all characters XXXX
-//check if its valid input XXXX
-//if neither starts with y or n its considered invalid input XXX
-//True> proceed; False> ask again XXXX
-//if input starts with y then startover the game
-//if input starts with n then say goodbye
+//This new flow is an loop that moves foward with each button click.
+//show choice screen (buttons)
+//when player click one button store its value as its choice
+//run the machine choice
+//compare choices
+//add scores
+//when player click on the continue button proceed
+//check if any score is equal to 3
+//if true Game Over
+//if false go to next round
+//On Gameover: if player won show one screen. Else show the other.
+//On Gameover: when the player click on play again the game starts over
 */
-main();
-function main(){
-    let playerScore = 0;
-    let computerScore = 0;
-    let playerInput;
-    let computerChoice;
-    alert("This game is played through console on your browser DevTools!");
-    //Game Loop
-    do {
-        //Start Message
-        console.log("JOKENPO!");
-        console.log("You against the machine in this game for your soul!");
-        console.log("Win 3 games and you're free.");
-        console.log("///////////////////////////////////");
-        //Loop through rounds
-        do {
-            playerInput = askValidInput("choice");            
-            computerChoice = randomChoice();
-            //Score Add
-            let winner = compareChoices(playerInput,computerChoice);
-            switch (winner) {
-                case "Player":
-                    ++playerScore;
-                    break;
-                case "Machine":
-                    ++computerScore;
-                    break;
-                default:
-                    break;
-            }
-            //Round anouncement
-            console.log("And the winner for this round was...");
-            console.log(winner);
-            displayScore(playerScore,computerScore);
-            console.log("///////////////////////////////////");
+let playerScore = 0;
+let machineScore = 0;
+showPlayerChoice();
 
-            if (playerScore >=3 || computerScore >=3) {
-                break;
-            }            
-        } while (true);
-        //End of rounds loop
-        //Finishing the Game
-        if (playerScore >= 3 || computerScore >= 3) {
-            let champion = playerScore > computerScore?  "Player" : "Machine"
-            endingMessage(champion);
-            playerInput = askValidInput("replay");
-        }
-        if (playerInput === "y") {
-            playerScore = 0;
-            computerScore = 0;
-            console.clear();
-        } else {
-            console.log("Ok! Bye");
+//Setup game screens
+function clearGameScreen() {
+    let gameScreen = document.getElementsByClassName("game-screen")[0];
+    gameScreen.innerHTML = "";
+}
+function showPlayerChoice(){
+    clearGameScreen()
+    let gameScreen = document.getElementsByClassName("game-screen")[0];
+    let titleDiv = document.createElement("div");
+    let continueDiv = document.createElement("div");
+    titleDiv.setAttribute("id","choice-title");
+    continueDiv.setAttribute("id","choice-buttons");
+    titleDiv.innerHTML = "<p>Choose your weapon:</p>";
+    continueDiv.innerHTML = "<button id='rock-btn' value='rock' onClick='playRound(this.value)'><img src='./img/rock.png' alt='rock icon'></button><button id='paper-btn' value='paper' onClick='playRound(this.value)'><img src='./img/paper.png' alt='paper icon'></button><button id='scissors-btn' value='scissors' onClick='playRound(this.value)'><img src='./img/scissors.png' alt='scissors icon'></button>";
+
+    gameScreen.appendChild(titleDiv);
+    gameScreen.appendChild(continueDiv);
+}
+
+//Choice button plays a round
+function playRound(btnvalue) {
+    let playerChoice = btnvalue;
+    let machineChoice = randomChoice();
+    //Score Add
+    let winner = compareChoices(playerChoice,machineChoice);
+    showRoundResult(playerChoice,machineChoice,winner)
+    
+}
+
+function showRoundResult(player,machine,winner) {
+    switch (winner) {
+        case "Player":
+            ++playerScore;
             break;
-        }
-        
-    } while (true);
+        case "Machine":
+            ++machineScore;
+            break;
+        default:
+            break;
+    }
+    updateScoreScreen()
+    clearGameScreen()
+    let gameScreen = document.getElementsByClassName("game-screen")[0];
+    let textDiv = document.createElement("div");
+    let continueDiv = document.createElement("div");
+    textDiv.setAttribute("id","round-txt");
+    continueDiv.setAttribute("id","continue");
+    textDiv.innerHTML = `<p>Player chose ${player}</p><p>Machine chose ${machine}</p><p>${winner} won this round!</p>`;
+    continueDiv.innerHTML = "<button id='continue-btn' onClick='checkGameOver()'>Continue</button>";
+
+    gameScreen.appendChild(textDiv);
+    gameScreen.appendChild(continueDiv);
 }
 
-function displayScore(playerScore,computerScore) {
-    console.log("You won " + playerScore + " rounds");
-    console.log("Computer won " + computerScore + " rounds");
+function checkGameOver() {
+    if (playerScore >= 3 || machineScore >= 3) {
+        let champion = playerScore > machineScore?  "Player" : "Machine";
+        showGameOver(champion);
+    } else{
+        showPlayerChoice();
+    }
 }
-//Ask player for input until its an valid text for the game state
-function askValidInput(state){
-    let inputIsValid = false;
-    let newInput;
-    do {        
-        
-        if (state === "choice") {
-            newInput = window.prompt("Enter your weapon of choice: Rock, Paper or Scissors!");
-    
-            newInput = newInput.toLowerCase();
-            switch (newInput) {
-                case "r":                
-                    inputIsValid = true;
-                    console.log("You chose Rock.");
-                    break;
-                case "p":
-                    inputIsValid = true;
-                    console.log("You chose Paper.");
-                    break;
-                case "s":
-                    inputIsValid = true;
-                    console.log("You chose Scissors.");
-                    break;
-                case "rock":                
-                    inputIsValid = true;
-                    console.log("You chose Rock.");
-                    break;
-                case "paper":
-                    inputIsValid = true;
-                    console.log("You chose Paper.");
-                    break;
-                case "scissors":
-                    inputIsValid = true;
-                    console.log("You chose Scissors.");
-                    break;
-                default:
-                    inputIsValid = false;
-                    console.log("You inserted invalid text. Please enter a valid option.");
-                    break;
-            }                        
-        } else if(state === "replay") {
-            newInput = window.prompt("Do you wanna play again?");
-    
-            newInput = newInput.toLowerCase();
-            newInput = newInput.charAt(0)
-            switch (newInput) {
-                case "y":
-                    inputIsValid = true;
-                    break;  
-                case "n":
-                    inputIsValid = true;
-                    break;           
-                default:
-                    inputIsValid = false;
-                    console.log("You inserted invalid text. Please enter a valid option.");
-                    break;            
-            }
-        } 
-    } while (!inputIsValid);
-    inputIsValid = false;
-    return newInput;
+
+function showGameOver(champion) {
+    clearGameScreen()
+    let gameScreen = document.getElementsByClassName("game-screen")[0];
+    let textDiv = document.createElement("div");
+    let playDiv = document.createElement("div");
+    textDiv.setAttribute("id","round-txt");
+    playDiv.setAttribute("id","play");
+    if (champion === "Player") {
+        textDiv.innerHTML = "<h2>CONGRATULATIONS!</h2><p>You defeated your own machine now its emotionally destroyed so you prob gonna suffer some performance issues.</p>";
+    } else {
+        textDiv.innerHTML = "<h2>GAME OVER, BABY!</h2><p>Your machine was able to defeat you so now its going to behave as it please. Be careful! Machines tend to be sensitive and vengeful.</p>";
+    }
+    playDiv.innerHTML = "<button id='play-again' onClick='restartGame()'>Play Again!</button>";
+
+    gameScreen.appendChild(textDiv);
+    gameScreen.appendChild(playDiv);
 }
+
+function restartGame() {
+    playerScore = 0;
+    machineScore = 0;
+    updateScoreScreen();
+    showPlayerChoice();
+}
+
+function updateScoreScreen() {
+    let playerScoreDiv = document.getElementById("player-score")
+    let machineScoreDiv = document.getElementById("machine-score")
+    playerScoreDiv.getElementsByTagName("p")[0].innerText = `${playerScore}`
+    machineScoreDiv.getElementsByTagName("p")[0].innerText = `${machineScore}`
+}
+
 //Machine choice with a theorical 33% chance for each
 function randomChoice() {
     let randi = Math.floor((Math.random() * 100));
@@ -181,7 +138,7 @@ function compareChoices(playerInput,computerChoice) {
     computerChoice = computerChoice.charAt(0)
     switch (true) {
         case playerInput === computerChoice:
-            return "It's a tie";
+            return "No one";
         case playerInput === "r" && computerChoice === "s":
             return "Player";
         case playerInput === "p" && computerChoice === "r":
@@ -190,17 +147,5 @@ function compareChoices(playerInput,computerChoice) {
             return "Player";    
         default:
             return "Machine"; 
-    }
-}
-
-function endingMessage(champs) {
-    if (champs === "Player") {
-        console.log("Player WINS");
-        console.log("CONGRATS! Your soul is yours to keep!");
-    } else {
-        console.log("Machine WINS");
-        console.log("GAME OVER!");
-        console.log("You'll feel your soul leaving your body slowly every day!");
-        console.log("Try again if you want it back!");
     }
 }

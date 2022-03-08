@@ -7,6 +7,10 @@
     <link rel="stylesheet" href="./style.css">
     <script src="./jokenpo.js" defer></script>
     <title>Jokenpo!</title>
+    <!--Font import-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,700;0,900;1,400;1,700;1,900&display=swap" rel="stylesheet">
 </head>
 <body>
     <div class="header">
@@ -22,19 +26,22 @@
     </div>
     <div class="game">
         <div class="scores">
-            <div class="player-score">
-                <img src="./img/player.png" alt="player icon">
-                <p>0</p>
-            </div>
-            <div class="machine-score">
-                <img src="./img/machine.png" alt="machine icon">
-                <p>0</p>
+            <p id="score-title">SCORE</p>
+            <div class="score-display">
+                <div id="player-score">
+                    <img src="./img/player.png" alt="player icon">
+                    <p>0</p>
+                </div>
+                <div id="machine-score">
+                    <img src="./img/machine.png" alt="machine icon">
+                    <p>0</p>
+                </div>
             </div>
         </div>
         <div class="game-screen"></div>
     </div>
     <div class="footer">
-        <p>All rights reserved to eredah&#169</p>
+        <p>All rights reserved to Eredah&#169</p>
     </div>
 
 </body>

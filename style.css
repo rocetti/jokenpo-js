@@ -1,0 +1,136 @@
+html {
+    background-color: #191A1E;
+    color: #CBCFD8;
+    font-family: 'Roboto', sans-serif;
+    font-size: 18px;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: stretch;
+    align-items: center;
+    height:100vh;
+    margin: 0;
+}
+img {
+    max-width: 100%;
+    max-height: 100%;
+}
+/*HEADER*/
+.header {
+    display: flex;
+    justify-content: flex-end;
+    width: 100vw;
+}
+
+ul {
+    display: flex;
+    margin: 2rem;
+}
+li {
+    padding: 1em;
+    list-style: none;
+}
+
+/*LOGO*/
+.logo {
+    display: flex;
+    justify-content: center;
+    align-self: stretch;
+    margin: 1em;
+}
+/*GAME*/
+.game {
+    align-self: stretch;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+}
+.scores {
+    display: flex;
+    flex-direction: column;    
+    justify-content: center;
+    align-items: center;
+}
+#score-title {
+    font-size: 24px;
+    font-weight: 900;
+    padding: 0px;
+    margin: 0px;
+}
+.score-display {
+    display: flex;
+    justify-content: space-evenly;
+}
+#player-score, #machine-score {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #CBCFD8;
+    color: #191A1E;
+    padding: 10px;
+    border-radius: 15px;
+    margin: 1rem;
+}
+#player-score p, #machine-score p {
+    margin: 0;
+    margin-left: 1rem;
+    font-size: 24px;
+    font-weight: 900;
+}
+.scores img {
+    max-height: 1.5em;
+}
+/*GAME SCREENS*/
+/*PLAYER CHOICE*/
+#choice-title{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+    color: #CBCFD8;
+    font-size: 24px;
+    font-weight: 900;
+}
+#choice-buttons{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+}
+#choice-buttons button{
+    border-style: none;
+    border-radius: 10px;
+    height: 4rem;
+    width: 4rem;
+    padding: 0.5rem;
+    margin-left: 0.5rem;
+    margin-right: 0.5rem;
+}
+#choice-buttons button:hover{
+    border-style: solid;
+    border-color: #CBCFD8;
+}
+#choice-buttons button:active{
+    border-style: solid;
+    border-color: white;
+    background-color: white;
+}
+#rock-btn {
+    background-color: #4a96d3;
+}
+#paper-btn {
+    background-color: #e8b152;
+}
+#scissors-btn {
+    background-color: #d64971;
+}
+/*FOOTER*/
+.footer {
+    margin-top: auto;
+}
