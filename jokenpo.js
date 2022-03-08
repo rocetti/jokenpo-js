@@ -50,15 +50,18 @@ function showRoundResult(player,machine,winner) {
     updateScoreScreen()
     clearGameScreen()
     let gameScreen = document.getElementsByClassName("game-screen")[0];
+    let roundDiv = document.createElement("div");
     let textDiv = document.createElement("div");
     let continueDiv = document.createElement("div");
+    roundDiv.setAttribute("id","round");
     textDiv.setAttribute("id","round-txt");
     continueDiv.setAttribute("id","continue");
-    textDiv.innerHTML = `<p>Player chose ${player}</p><p>Machine chose ${machine}</p><p>${winner} won this round!</p>`;
+    textDiv.innerHTML = `<p>Player chose ${player}.</p><p>Machine chose ${machine}.</p><p>${winner} won this round!</p>`;
     continueDiv.innerHTML = "<button id='continue-btn' onClick='checkGameOver()'>Continue</button>";
-
-    gameScreen.appendChild(textDiv);
-    gameScreen.appendChild(continueDiv);
+    
+    roundDiv.appendChild(textDiv);
+    roundDiv.appendChild(continueDiv);
+    gameScreen.appendChild(roundDiv);
 }
 
 function checkGameOver() {
@@ -73,9 +76,11 @@ function checkGameOver() {
 function showGameOver(champion) {
     clearGameScreen()
     let gameScreen = document.getElementsByClassName("game-screen")[0];
+    let gameOverDiv = document.createElement("div");
     let textDiv = document.createElement("div");
     let playDiv = document.createElement("div");
-    textDiv.setAttribute("id","round-txt");
+    gameOverDiv.setAttribute("id","game-over");
+    textDiv.setAttribute("id","game-over-txt");
     playDiv.setAttribute("id","play");
     if (champion === "Player") {
         textDiv.innerHTML = "<h2>CONGRATULATIONS!</h2><p>You defeated your own machine now its emotionally destroyed so you prob gonna suffer some performance issues.</p>";
@@ -84,8 +89,9 @@ function showGameOver(champion) {
     }
     playDiv.innerHTML = "<button id='play-again' onClick='restartGame()'>Play Again!</button>";
 
-    gameScreen.appendChild(textDiv);
-    gameScreen.appendChild(playDiv);
+    gameOverDiv.appendChild(textDiv);
+    gameOverDiv.appendChild(playDiv);
+    gameScreen.appendChild(gameOverDiv);
 }
 
 function restartGame() {

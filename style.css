@@ -85,6 +85,24 @@ li {
     max-height: 1.5em;
 }
 /*GAME SCREENS*/
+button {
+    border-style: none;
+    border-radius: 10px;
+    padding: 0.5rem;
+    background-color: #5ee5c5;
+    color: #191A1E;
+    font-size: 18px;
+    font-weight: bold;
+}
+button:hover{
+    border-style: solid;
+    border-color: #CBCFD8;
+}
+button:active{
+    border-style: solid;
+    border-color: white;
+    background-color: white;
+}
 /*PLAYER CHOICE*/
 #choice-title{
     display: flex;
@@ -129,6 +147,39 @@ li {
 }
 #scissors-btn {
     background-color: #d64971;
+}
+/*ROUND SCREEN*/
+#round {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 3rem;
+}
+#round-txt {
+    margin-right: 1rem;
+}
+#round-txt p {
+    text-align: right;
+    font-size: 18px;
+    margin: 0;
+
+}
+#round-txt p:last-child{
+    font-size: 24px;
+    font-weight: bold;
+    margin-top: 1rem;
+}
+
+/*GAMEOVER*/
+#game-over {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+#game-over p {
+    max-width: 300px;
 }
 /*FOOTER*/
 .footer {
